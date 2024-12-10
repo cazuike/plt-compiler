@@ -12,11 +12,11 @@ lex() {
 }
 
 if [ "$1" == "test" ]; then
-    lex "example1.inc"
-    lex "example2.inc"
-    lex "example3.inc"
-    lex "example4.inc"
-    lex "example5.inc"
+    lex "lexer_examples/example1.inc"
+    lex "lexer_examples/example2.inc"
+    lex "lexer_examples/example3.inc"
+    lex "lexer_examples/example4.inc"
+    lex "lexer_examples/example5.inc"
 else
     lex "$1"
 fi

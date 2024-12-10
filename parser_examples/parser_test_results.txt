@@ -1,0 +1,103 @@
+parsing
+0 ('KEYWORD', 'input!')
+1 ('STRINGLITERAL', '"data.csv"')
+2 ('KEYWORD', 'filter!')
+3 ('IDENTIFIER', 'quantity')
+4 ('OPERATOR', '>')
+5 ('INTLITERAL', '100')
+6 ('KEYWORD', 'output!')
+7 ('STRINGLITERAL', '"output.csv"')
+
+AST:
+Program
+  Input: data.csv
+  Filter:
+    Condition: quantity > 100 (type=INT)
+  Output: output.csv
+
+parsing
+0 ('KEYWORD', 'input!')
+1 ('STRINGLITERAL', '"employeeee_data.csv"')
+2 ('KEYWORD', 'groupby!')
+3 ('IDENTIFIER', 'department')
+4 ('KEYWORD', 'aggregate!')
+5 ('IDENTIFIER', 'avg')
+6 ('PUNCTUATION', '(')
+7 ('IDENTIFIER', 'salary')
+8 ('PUNCTUATION', ')')
+9 ('KEYWORD', 'output!')
+10 ('STRINGLITERAL', '"avg_salaries.csv"')
+
+AST:
+Program
+  Input: employeeee_data.csv
+  GroupBy: department
+  Aggregate:
+    avg(salary)
+  Output: avg_salaries.csv
+
+parsing
+0 ('KEYWORD', 'input!')
+1 ('STRINGLITERAL', '"data.csv"')
+2 ('KEYWORD', 'filter!')
+3 ('IDENTIFIER', 'product')
+4 ('OPERATOR', '=')
+5 ('STRINGLITERAL', '"Laptop"')
+6 ('KEYWORD', 'filter!')
+7 ('IDENTIFIER', 'price')
+8 ('OPERATOR', '>=')
+9 ('INTLITERAL', '1000')
+10 ('KEYWORD', 'groupby!')
+11 ('IDENTIFIER', 'region')
+12 ('KEYWORD', 'aggregate!')
+13 ('IDENTIFIER', 'sum')
+14 ('PUNCTUATION', '(')
+15 ('IDENTIFIER', 'profit')
+16 ('PUNCTUATION', ')')
+17 ('KEYWORD', 'output!')
+18 ('STRINGLITERAL', '"output.csv"')
+
+AST:
+Program
+  Input: data.csv
+  Filter:
+    Condition: product = Laptop (type=STRING)
+  Filter:
+    Condition: price >= 1000 (type=INT)
+  GroupBy: region
+  Aggregate:
+    sum(profit)
+  Output: output.csv
+
+parsing
+0 ('KEYWORD', 'input!')
+1 ('STRINGLITERAL', '"data.csv"')
+2 ('KEYWORD', 'filter!')
+3 ('IDENTIFIER', 'event_type')
+4 ('OPERATOR', '=')
+5 ('STRINGLITERAL', '"TEST"')
+6 ('KEYWORD', 'shout!')
+7 ('STRINGLITERAL', '"filter testing parse"')
+8 ('KEYWORD', 'output!')
+9 ('STRINGLITERAL', '"output.csv"')
+
+AST:
+Program
+  Input: data.csv
+  Filter:
+    Condition: event_type = TEST (type=STRING)
+  Shout: filter testing parse
+  Output: output.csv
+
+parsing
+0 ('KEYWORD', 'input!')
+1 ('STRINGLITERAL', '"data.csv"')
+2 ('KEYWORD', 'filter!')
+3 ('IDENTIFIER', 'total_cost')
+4 ('OPERATOR', '>')
+5 ('OPERATOR', '>')
+6 ('INTLITERAL', '5000')
+7 ('KEYWORD', 'output!')
+8 ('STRINGLITERAL', '"output.csv"')
+Syntax Error: Need ID, INT, or STRING in condition  at token 5
+
