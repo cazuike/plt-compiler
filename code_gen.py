@@ -3,6 +3,7 @@ import sys
 from scanner import IncurvusScanner
 from my_parser import Parser
 import time
+from code_opt import optimize
 
 class CodeGenerator:
     def __init__(self, ast_tree):
@@ -186,12 +187,19 @@ if __name__ == "__main__":
 
     parser = Parser(tokens)
     ast_tree = parser.parse()
+    optimizer = optimize(ast_tree)
+    optimized_ast = optimizer.optimize()
 
     generator = CodeGenerator(ast_tree)
     code = generator.generate()
 
-
     with open(output_file, "w") as f:
+        f.write(code)
+    
+    generator = CodeGenerator(optimized_ast)
+    code = generator.generate()
+
+    with open("opt-"+output_file, "w") as f:
         f.write(code)
 
     print("intermediate python code generated")
